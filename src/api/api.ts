@@ -35,12 +35,13 @@ export async function requestPrediction(
     // 3. JSON 파싱
     const data = (await res.json()) as PredictionResult;
     const imageUrl = `data:image/png;base64,${data.imageBase64}`;
+    const finalUrl = `https://home.goldenmine.kr/chakboot/ai/url/${data.url}`;
 
-    console.log(data.url)
+    console.log(finalUrl)
     // zustand에 저장
     usePredictionStore.setState({
         resultImage: imageUrl,
-        resultUrl: data.url,
+        resultUrl: finalUrl,
     });
 
     // return data;
