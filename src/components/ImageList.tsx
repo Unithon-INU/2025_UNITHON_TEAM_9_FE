@@ -45,7 +45,7 @@ const ImageList: React.FC<ImageListProps> = ({ imageType }) => {
             return name; // base64 데이터는 그대로 사용
         }
         // 일반 파일명이면 경로 추가
-        return `/images/${imageFolder}/${name}`;
+        return `/chakbootlounge/images/${imageFolder}/${name}`;
     };
 
     const handleClick = (name: string) => {

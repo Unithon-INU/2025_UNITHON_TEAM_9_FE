@@ -17,8 +17,8 @@ function ResultLoading() {
             }
 
             try {
-                const modelBlob = await fetchImageBlob(`/images/models/${modelImageName}`);
-                const clothBlob = await fetchImageBlob(`/images/clothes/${clothImageName}`);
+                const modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
+                const clothBlob = await fetchImageBlob(`/chakbootlounge/images/clothes/${clothImageName}`);
 
                 await requestPrediction(modelBlob, clothBlob);
 

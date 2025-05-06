@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 
-const isProduction = process.env.NODE_ENV === 'production'
+// const isProduction = process.env.NODE_ENV === 'production'
 
 export default defineConfig({
-  base: isProduction ? '/chakbootlounge/' : '/',
+  // base: isProduction ? '/chakbootlounge/' : '/',
+  base: '/chakbootlounge/',
   plugins: [react()],
 })
