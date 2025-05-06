@@ -10,7 +10,7 @@
 
 .select-cloth-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     min-height: 100vh;
     background-color: var(--background-light);
     font-family: 'Noto Sans KR', sans-serif;

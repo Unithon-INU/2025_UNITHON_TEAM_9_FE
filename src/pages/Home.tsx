@@ -23,8 +23,9 @@ function Home() {
 
             <h1 className="title">가상 피팅 체험하기</h1>
             <p className="subtitle">
-                원하는 옷과 모델을 선택하여 가상 피팅을 경험해보세요. 나에게
-                어울리는 스타일을 찾아보세요!
+                원하는 옷과 모델을 선택하여 가상 피팅을 경험해보세요
+                <br />
+                당신에게 어울리는 옷을 찾아드립니다!
             </p>
 
             <button className="start-button" onClick={handleClick}>

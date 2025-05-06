@@ -1,0 +1,92 @@
+/* ImageList.css */
+
+/* 컨테이너 스타일 */
+.cloth-list,
+.model-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+/* 이미지 아이템 공통 스타일 */
+.image-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(74, 85, 162, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* 이미지 호버 효과 */
+.image-item:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+/* 선택된 이미지 스타일 */
+.image-item.selected {
+    border: 3px solid #4a55a2;
+}
+
+/* 이미지 스타일 */
+.image-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* 모델 이미지 크기 */
+.model-list .image-item {
+    width: 280px;
+    height: 380px;
+}
+
+/* 옷 이미지 크기 */
+.cloth-list .image-item {
+    width: 280px;
+    height: 380px;
+}
+
+/* 선택 표시자 스타일 */
+.selected-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background-color: #4a55a2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.check-icon::after {
+    content: '✓';
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .cloth-list,
+    .model-list {
+        gap: 10px;
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    .model-list .image-item,
+    .cloth-list .image-item {
+        width: 180px;
+        height: 240px;
+        flex-shrink: 0;
+    }
+}

@@ -23,11 +23,7 @@ function SelectCloth() {
                 <Navbar />
                 <h1 className="title">옷을 선택해주세요</h1>
                 <p className="subtitle">가상 피팅에 사용할 옷을 선택하세요.</p>
-
-                <div className="cloth-grid">
-                    <ImageList imageType="cloth" />
-                </div>
-
+                <ImageList imageType="cloth" />
                 {selectedCloth && (
                     <div style={{ marginTop: '30px', textAlign: 'center' }}>
                         <button
