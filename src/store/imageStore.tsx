@@ -6,11 +6,13 @@ type ImageStore = {
     modelImageName: string | null;
     setClothImage: (name: string) => void;
     setModelImage: (name: string) => void;
+    resetImages: () => void;
 };
 
-export const useImageStore = create<ImageStore>((set) => ({
+export const useImageStore = create<ImageStore>(set => ({
     clothImageName: null,
     modelImageName: null,
-    setClothImage: (name) => set({ clothImageName: name }),
-    setModelImage: (name) => set({ modelImageName: name }),
+    setClothImage: name => set({ clothImageName: name }),
+    setModelImage: name => set({ modelImageName: name }),
+    resetImages: () => set({ clothImageName: null, modelImageName: null }),
 }));
