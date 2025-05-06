@@ -34,10 +34,10 @@ function Home() {
 
             <div className="image-preview">
                 <div className="preview-item">
-                    <img src="/images/models/woman01.png" alt="옷 미리보기" />
+                    <img src="/chakbootlounge/images/models/woman01.png" alt="옷 미리보기" />
                 </div>
                 <div className="preview-item">
-                    <img src="/images/models/man01.png" alt="모델 미리보기" />
+                    <img src="/chakbootlounge/images/models/man01.png" alt="모델 미리보기" />
                 </div>
             </div>
         </div>
