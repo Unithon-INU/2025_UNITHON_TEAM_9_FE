@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useImageStore } from '../store/imageStore.tsx';
-import { useRecentCaptureStore } from '../store/recentcaptureStore';
+// import { useRecentCaptureStore } from '../store/recentcaptureStore';
 import { getRecentCapture } from '../api/recentcapture.ts';
 import './SelectModel.css';
 import ImageList from '../components/ImageList.tsx';
