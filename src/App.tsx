@@ -8,7 +8,7 @@ import Result from "./pages/Result.tsx";
 
 function App() {
     return (
-        <Router>
+        <Router basename="/chakbootlounge">
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/selectcloth" element={<SelectCloth />} />
