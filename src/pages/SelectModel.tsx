@@ -12,7 +12,7 @@ function SelectModel() {
     // 선택한 모델
     const selectedModel = useImageStore(state => state.modelImageName);
     // 최근에 찍은 이미지 리스트
-    const recentImage = useRecentCaptureStore(state => state.recentImage);
+    // const recentImage = useRecentCaptureStore(state => state.recentImage);
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState<string | null>(null);
