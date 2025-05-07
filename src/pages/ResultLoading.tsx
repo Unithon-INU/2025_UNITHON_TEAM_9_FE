@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImageStore } from '../store/imageStore';
 import { requestPrediction } from '../api/api';
-import { fetchImageBlob } from '../utils/blob';
+import {fetchImageBlob, base64ToBlob, convertJpegBase64ToPngBase64} from '../utils/blob';
 
 function ResultLoading() {
     const navigate = useNavigate();
@@ -17,7 +17,14 @@ function ResultLoading() {
             }
 
             try {
-                const modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
+                // console.log(`images: ${modelImageName} ${clothImageName}`)
+                let modelBlob: Blob;
+                if (modelImageName.startsWith('data:image')) {
+                    const png = await convertJpegBase64ToPngBase64(modelImageName)
+                    modelBlob = base64ToBlob(png)
+                } else {
+                    modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
+                }
                 const clothBlob = await fetchImageBlob(`/chakbootlounge/images/clothes/${clothImageName}`);
 
                 await requestPrediction(modelBlob, clothBlob);
@@ -38,6 +45,7 @@ function ResultLoading() {
     };
 
     return <div>
+        {/*<img src={modelImageName ?? ""} alt={"x"}/>*/}
         <h1>결과 생성 중입니다... 잠시만 기다려주세요(약 20초 소요)</h1>
         <button className="start-button" onClick={handleClick}>
             안되는 것 같으면 재시도하기
