@@ -33,7 +33,16 @@ function ResultLoading() {
         runPrediction();
     }, [clothImageName, modelImageName, navigate]);
 
-    return <div><h2>결과 생성 중입니다...</h2></div>;
+    const handleClick = () => {
+        navigate('/');
+    };
+
+    return <div>
+        <h1>결과 생성 중입니다... 잠시만 기다려주세요(약 20초 소요)</h1>
+        <button className="start-button" onClick={handleClick}>
+            안되는 것 같으면 재시도하기
+        </button>
+    </div>;
 }
 
 export default ResultLoading;
