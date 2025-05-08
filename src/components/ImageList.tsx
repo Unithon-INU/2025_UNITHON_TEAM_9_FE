@@ -3,7 +3,22 @@ import { useRecentCaptureStore } from '../store/recentcaptureStore';
 import './ImageList.css';
 import React, { useMemo } from 'react';
 
-const clothList = ['cloth01.png', 'cloth02.png'];
+const clothList = [
+    'cloth01.png',
+    'cloth02.png',
+    'cloth03.png',
+    'cloth04.png',
+    'cloth05.png',
+    'cloth06.png',
+    'cloth07.png',
+    'cloth08.png',
+    'cloth09.png',
+    'cloth10.png',
+    'cloth11.png',
+    'cloth12.png',
+    'cloth13.png',
+    // 'cloth02.png',
+];
 
 const modelList = ['man01.png', 'woman01.png'];
 
