@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImageStore } from '../store/imageStore';
-import { requestPrediction } from '../api/api';
-import {fetchImageBlob, base64ToBlob, convertJpegBase64ToPngBase64} from '../utils/blob';
+import {requestPrediction, requestPredictionRecent} from '../api/api';
+import {fetchImageBlob} from '../utils/blob';
 
 function ResultLoading() {
     const navigate = useNavigate();
@@ -18,16 +18,16 @@ function ResultLoading() {
 
             try {
                 // console.log(`images: ${modelImageName} ${clothImageName}`)
-                let modelBlob: Blob;
-                if (modelImageName.startsWith('data:image')) {
-                    const png = await convertJpegBase64ToPngBase64(modelImageName)
-                    modelBlob = base64ToBlob(png)
-                } else {
-                    modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
-                }
                 const clothBlob = await fetchImageBlob(`/chakbootlounge/images/clothes/${clothImageName}`);
 
-                await requestPrediction(modelBlob, clothBlob);
+                let modelBlob: Blob;
+                if (modelImageName.startsWith('data:image')) {
+                    await requestPredictionRecent(clothBlob);
+                } else {
+                    modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
+                    await requestPrediction(modelBlob, clothBlob);
+                }
+
 
                 // 완료되면 result 페이지로 이동
                 navigate('/result');
@@ -38,7 +38,7 @@ function ResultLoading() {
         };
 
         runPrediction();
-    }, [clothImageName, modelImageName, navigate]);
+    }, [modelImageName, navigate]);
 
     const handleClick = () => {
         navigate('/');
@@ -46,7 +46,7 @@ function ResultLoading() {
 
     return <div>
         {/*<img src={modelImageName ?? ""} alt={"x"}/>*/}
-        <h1>결과 생성 중입니다... 잠시만 기다려주세요(약 20초 소요)</h1>
+        <h1>결과 생성 중입니다... 잠시만 기다려주세요 (약 20초 소요)</h1>
         <button className="start-button" onClick={handleClick}>
             안되는 것 같으면 재시도하기
         </button>

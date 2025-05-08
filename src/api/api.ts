@@ -44,3 +44,36 @@ export async function requestPrediction(img1: Blob, img2: Blob) {
 
     // return data;
 }
+
+
+export async function requestPredictionRecent(img: Blob) {
+    console.log('request prediction');
+    // 1. multipart/form-data 생성
+    const form = new FormData();
+    form.append('img', img, 'img.png');
+
+    // 2. fetch 요청
+    const res = await fetch(url + '/ai/predictrecent', {
+        method: 'POST',
+        body: form,
+    });
+
+    if (!res.ok)
+        throw new Error(
+            `Prediction request failed: ${res.status} ${res.statusText}`
+        );
+
+    // 3. JSON 파싱
+    const data = (await res.json()) as PredictionResult;
+    const imageUrl = `data:image/png;base64,${data.imageBase64}`;
+    const finalUrl = `https://home.goldenmine.kr/chakboot/ai/url/${data.url}`;
+
+    console.log(finalUrl);
+    // zustand에 저장
+    usePredictionStore.setState({
+        resultImage: imageUrl,
+        resultUrl: finalUrl,
+    });
+
+    // return data;
+}

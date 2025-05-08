@@ -54,7 +54,7 @@ const ImageList: React.FC<ImageListProps> = ({ imageType }) => {
         } else {
             setModelImage(name);
         }
-        console.log('ImageList handleClick ' + name + ', ' + imageType);
+        // console.log('ImageList handleClick ' + name + ', ' + imageType);
     };
 
     return (
