@@ -7,22 +7,24 @@ export async function fetchImageBlob(path: string): Promise<Blob> {
     return await res.blob();
 }
 
-export async function convertJpegBase64ToPngBase64(jpegBase64: string): Promise<string> {
-    const fullBase64 = jpegBase64.startsWith("data:")
+export async function convertJpegBase64ToPngBase64(
+    jpegBase64: string
+): Promise<string> {
+    const fullBase64 = jpegBase64.startsWith('data:')
         ? jpegBase64
         : `data:image/jpeg;base64,${jpegBase64}`;
 
     const img = await loadImage(fullBase64);
 
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;
 
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas.getContext('2d')!;
     ctx.drawImage(img, 0, 0);
 
     // PNG로 재인코딩한 base64 반환
-    return canvas.toDataURL("image/png");
+    return canvas.toDataURL('image/png');
 }
 
 /**
@@ -37,7 +39,6 @@ function loadImage(src: string): Promise<HTMLImageElement> {
     });
 }
 
-
 /**
  * base64 → Blob
  * @param base64  "data:image/png;base64,..."  또는 순수 base64 문자열
@@ -45,18 +46,23 @@ function loadImage(src: string): Promise<HTMLImageElement> {
  */
 export function base64ToBlob(base64: string, mime?: string): Blob {
     // dataURL이라면 "data:..." 부분과 "," 이후의 actual base64 부분 분리
-    const [, header, data] =
-    base64.match(/^data:([^;]+);base64,(.*)$/) ?? [, mime ?? "", base64];
-
+    const [, header, data] = base64.match(/^data:([^;]+);base64,(.*)$/) ?? [
+        '',
+        mime ?? '',
+        base64,
+    ];
+    // base64 -> binary
     const binary = atob(data);
     const len = binary.length;
+    // binary -> bytes
     const bytes = new Uint8Array(len);
-
     for (let i = 0; i < len; i++) {
         bytes[i] = binary.charCodeAt(i);
     }
 
-    return new Blob([bytes], { type: header || mime || "application/octet-stream" });
+    return new Blob([bytes], {
+        type: header || mime || 'application/octet-stream',
+    });
 }
 
 // export async function fixOrientation(file: File): Promise<Blob> {

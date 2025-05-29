@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.tsx';
 import SelectCloth from './pages/SelectCloth';
 import SelectModel from './pages/SelectModel';
-import ResultLoading from "./pages/ResultLoading.tsx";
-import Result from "./pages/Result.tsx";
+import ResultLoading from './pages/ResultLoading.tsx';
+import SelectOption from './pages/SelectOption.tsx';
+import Result from './pages/Result.tsx';
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/selectcloth" element={<SelectCloth />} />
+                <Route path="/selectoption" element={<SelectOption />} />
                 <Route path="/selectmodel" element={<SelectModel />} />
                 <Route path="/resultloading" element={<ResultLoading />} />
                 <Route path="/result" element={<Result />} />

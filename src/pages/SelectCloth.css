@@ -99,11 +99,18 @@
 }
 
 .continue-button {
+    position: fixed;
+    bottom: 20px;
+    left: 40%;
+    width: 300px;
+    margin: 0 auto;
     background-color: var(--primary-color);
     color: white;
     border: none;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 0;
+    z-index: 100;
     border-radius: 10px;
-    padding: 16px 36px;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;

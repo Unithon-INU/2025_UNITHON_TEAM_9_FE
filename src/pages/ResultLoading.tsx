@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImageStore } from '../store/imageStore';
-import {requestPrediction, requestPredictionRecent} from '../api/api';
-import {fetchImageBlob} from '../utils/blob';
+import { requestPrediction, requestPredictionRecent } from '../api/api';
+import { fetchImageBlob } from '../utils/blob';
 
 function ResultLoading() {
     const navigate = useNavigate();
@@ -18,16 +18,19 @@ function ResultLoading() {
 
             try {
                 // console.log(`images: ${modelImageName} ${clothImageName}`)
-                const clothBlob = await fetchImageBlob(`/chakbootlounge/images/clothes/${clothImageName}`);
+                const clothBlob = await fetchImageBlob(
+                    `/chakbootlounge/images/clothes/${clothImageName}`
+                );
 
                 let modelBlob: Blob;
                 if (modelImageName.startsWith('data:image')) {
                     await requestPredictionRecent(clothBlob);
                 } else {
-                    modelBlob = await fetchImageBlob(`/chakbootlounge/images/models/${modelImageName}`);
+                    modelBlob = await fetchImageBlob(
+                        `/chakbootlounge/images/models/${modelImageName}`
+                    );
                     await requestPrediction(modelBlob, clothBlob);
                 }
-
 
                 // 완료되면 result 페이지로 이동
                 navigate('/result');
@@ -44,13 +47,15 @@ function ResultLoading() {
         navigate('/');
     };
 
-    return <div>
-        {/*<img src={modelImageName ?? ""} alt={"x"}/>*/}
-        <h1>결과 생성 중입니다... 잠시만 기다려주세요 (약 20초 소요)</h1>
-        <button className="start-button" onClick={handleClick}>
-            안되는 것 같으면 재시도하기
-        </button>
-    </div>;
+    return (
+        <div>
+            {/*<img src={modelImageName ?? ""} alt={"x"}/>*/}
+            <h1>결과 생성 중입니다... 잠시만 기다려주세요 (약 20초 소요)</h1>
+            <button className="start-button" onClick={handleClick}>
+                재시도하기
+            </button>
+        </div>
+    );
 }
 
 export default ResultLoading;

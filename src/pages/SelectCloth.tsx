@@ -11,9 +11,7 @@ function SelectCloth() {
     // 직접 선택했을 때 리디렉션 처리
     const handleSelectAndContinue = () => {
         if (selectedCloth) {
-            // setClothImage(selectedCloth);
-            navigate('/selectmodel');
-            console.log('navigated selectedmodel');
+            navigate('/selectoption');
         }
     };
 
