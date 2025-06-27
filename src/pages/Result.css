@@ -1,0 +1,109 @@
+/* src/pages/Result.css */
+
+.result-page-wrapper {
+    background-color: #f8f9fa; /* 전체 페이지 배경색 */
+    min-height: 100vh;
+}
+
+/* 페이지 콘텐츠를 담는 메인 컨테이너 */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin-top: 70px; /* Navbar 높이만큼 공간 확보 */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* "가상 피팅 결과" 제목 */
+.result-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 32px;
+}
+
+/* 결과 이미지를 감싸는 카드 */
+.result-image-card {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* 이미지 모서리를 둥글게 */
+    margin-bottom: 40px;
+}
+
+.result-image {
+    width: 100%;
+    height: auto;
+    display: block; /* 이미지 아래 불필요한 공백 제거 */
+}
+
+/* QR 코드와 URL을 포함하는 공유 섹션 */
+.share-section {
+    width: 100%;
+    max-width: 450px;
+    padding: 32px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.share-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* QR 코드를 감싸서 여백과 스타일을 줌 */
+.qr-code-wrapper {
+    padding: 8px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.share-url {
+    font-size: 14px;
+    color: #666;
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 6px;
+    word-break: break-all; /* URL이 길 경우 줄바꿈 처리 */
+    margin: 0;
+}
+
+/* 돌아가기 버튼 */
+.back-button {
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(70, 94, 183, 0.25);
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(70, 94, 183, 0.35);
+}
+
+/* 로딩 또는 에러 시 텍스트 스타일 */
+.loading-or-error-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 24px;
+}
