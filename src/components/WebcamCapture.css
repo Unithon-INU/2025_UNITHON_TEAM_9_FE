@@ -1,12 +1,95 @@
-.action-button-select-option {
-    width: 50%;
-    padding: 16px 0;
-    font-size: 17px;
-    font-weight: bold;
-    background-color: #4a55a2;
+/* src/components/WebcamCapture.css */
+
+/* 전체 화면을 덮는 반투명 오버레이 */
+.webcam-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* 다른 UI 요소들 위에 표시 */
+}
+
+/* 웹캠과 버튼을 담는 메인 컨테이너 */
+.webcam-capture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; /* 비디오와 버튼 사이의 간격 */
+    padding: 20px;
+}
+
+/* 웹캠 영상을 감싸는 래퍼: 디자인 적용 */
+.webcam-wrapper {
+    width: 100%;
+    max-width: 400px; /* 최대 너비 제한 (데스크탑에서도 보기 좋게) */
+    aspect-ratio: 9 / 16; /* 세로 영상 비율 유지 */
+    border-radius: 20px; /* 둥근 모서리 */
+    overflow: hidden; /* 모서리를 벗어나는 비디오 숨김 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: #333; /* 비디오 로딩 중 배경색 */
+}
+
+/* react-webcam 컴포넌트 내부의 video 태그 스타일 */
+.webcam-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 래퍼를 꽉 채우도록 비디오 크기 조정 */
+}
+
+/* 캡처 버튼 스타일 */
+.capture-button {
+    width: 100%;
+    max-width: 400px;
+    padding: 18px 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    /* 요청하신 linear-gradient 적용 */
+    background: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.capture-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(70, 94, 183, 0.4);
+}
+
+/* --- 에러 상태 스타일 --- */
+.error-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
     text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+    font-size: 1.1rem;
+    color: #d32f2f; /* 에러를 나타내는 붉은색 */
+    margin: 0 0 24px 0;
+    font-weight: 500;
+}
+
+.back-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
 }

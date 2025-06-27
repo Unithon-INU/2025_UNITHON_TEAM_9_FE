@@ -51,7 +51,6 @@ const SelectOption: React.FC = () => {
                 <WebcamCapture />
             ) : recentImages.length > 0 ? (
                 <div className="captured-image-container">
-                    <Navbar />
                     <h2 className="main-title-select-option">캡처된 이미지</h2>
                     <div className="captured-image">
                         <img src={recentImages[0]} alt="캡처된 이미지" />
@@ -76,7 +75,9 @@ const SelectOption: React.FC = () => {
                     <Navbar />
                     <div className="page-container-select-option">
                         <h1 className="main-title-select-option">
-                            희망하는 옵션을 선택해 주세요
+                            원하는 의상을 피팅하기 위해서
+                            <br />
+                            모델을 선택해주세요
                         </h1>
                         <div className="options-layout-select-option">
                             {/* 사진 찍기 */}

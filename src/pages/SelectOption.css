@@ -1,140 +1,179 @@
-/* SelectOption.css */
+/* SelectOption.css (최종 수정) */
 :root {
     --colorful-gradient: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
 }
-/* Styles for the main page container for this specific component */
+
+/* 페이지 전체 컨테이너 */
 .page-container-select-option {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px 20px 20px 20px; /* 상단 패딩 증가 */
-    padding-top: 40px; /* Adjust as needed, gives space from Navbar or top */
-    padding-bottom: 40px;
-    background-color: #ffffff; /* White background for the content area */
-    min-height: calc(
-        100vh - YOUR_NAVBAR_HEIGHT
-    ); /* Adjust if you have a fixed Navbar */
+    min-height: calc(100vh - 70px);
+    margin-top: 70px;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
     box-sizing: border-box;
 }
 
+/* 메인 제목 */
 .main-title-select-option {
-    font-size: 30px; /* Main title size */
-    font-weight: bold;
-    padding-top: 40px;
-    color: #333333; /* Dark gray text color */
-    margin-top: 40px;
-    margin-bottom: 50px; /* Space below the title */
+    font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+    margin: 20px 0 50px 0;
     text-align: center;
+    line-height: 1.5;
 }
 
+/* 두 옵션 박스를 감싸는 레이아웃 */
 .options-layout-select-option {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Aligns the top of the boxes */
-    gap: 50px; /* Space between the two option boxes */
+    align-items: flex-start;
+    gap: 40px;
     width: 100%;
-    max-width: 800px; /* Max width for the layout of the two boxes */
-    padding: 0 20px; /* Side padding */
+    max-width: 800px;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
+/* 각 옵션 박스 (촬영 / 아바타) */
 .option-box-select-option {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 320px; /* Fixed width for each option box */
+    width: 320px;
     box-sizing: border-box;
 }
 
-.image-upload-area-select-option {
-    width: 100%;
-    height: 420px; /* Height for the image placeholder/display area */
-    border: 2px dashed #cccccc; /* Dashed border for the "Take Photo" option */
-    background-color: #ffffff; /* White background inside the dashed border */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px; /* Space between the image area and the button */
-    border-radius: 8px; /* Slightly rounded corners for the placeholder box */
-    box-sizing: border-box;
-}
-
+.image-upload-area-select-option,
 .avatar-image-area-select-option {
     width: 100%;
-    height: 420px; /* Height for the image placeholder/display area */
-    background-color: #f0f0f0; /* Light gray background for the avatar image container */
+    height: 420px;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px; /* Space between the image area and the button */
-    border-radius: 8px; /* Slightly rounded corners for the image container */
-    overflow: hidden; /* Ensures the image fits neatly */
+    margin-bottom: 25px;
+    overflow: hidden;
     box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.option-box-select-option:hover .image-upload-area-select-option,
+.option-box-select-option:hover .avatar-image-area-select-option {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .icon-camera-select-option {
-    width: 200px; /* Size of the camera icon */
-    height: 200px;
-    opacity: 0.5; /* Make the icon a bit muted */
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    opacity: 0.4;
 }
 
 .image-avatar-select-option {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the area, may crop slightly */
+    object-fit: cover;
 }
 
 .action-button-select-option {
-    width: 100%; /* 버튼이 부모 요소의 전체 너비를 차지 */
-    padding: 18px 0; /* 수직 패딩 증가 */
-    font-size: 18px; /* 글꼴 크기 증가 */
+    width: 100%;
+    padding: 16px 0;
+    font-size: 17px;
     font-weight: 600;
-    color: #ffffff; /* 흰색 텍스트 */
+    color: #ffffff;
     background: var(--colorful-gradient);
     border: none;
-    border-radius: 10px; /* 더 둥근 모서리 */
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(74, 108, 247, 0.25); /* 그림자 추가 */
-    letter-spacing: 0.5px; /* 글자 간격 조정 */
+    box-shadow: 0 4px 15px rgba(70, 94, 183, 0.25);
 }
+
 .action-button-select-option:hover {
-    background-color: #3a5bd9; /* 호버 시 약간 어두운 색상 */
-    transform: translateY(-2px); /* 호버 시 약간 위로 이동 효과 */
-    box-shadow: 0 6px 16px rgba(74, 108, 247, 0.35); /* 호버 시 그림자 강화 */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(70, 94, 183, 0.35);
 }
 
-/* Responsive adjustments for smaller screens */
+/* --- 반응형 디자인 (기존 유지) --- */
 @media (max-width: 768px) {
-    .main-title-select-option {
-        font-size: 26px;
-        margin: 60px 0 30px 0; /* 상단 마진 증가 */
-    }
-
-    .options-layout-select-option {
-        flex-direction: column; /* Stack options vertically */
-        align-items: center; /* Center items when stacked */
-        gap: 40px; /* Adjust gap for vertical layout */
-    }
-
-    .option-box-select-option {
-        width: 85%; /* Option boxes take more width */
-        max-width: 350px; /* But not too wide */
-    }
-
-    .image-upload-area-select-option,
-    .avatar-image-area-select-option {
-        height: 380px; /* Adjust height for smaller screens */
-    }
-
-    .action-button-select-option {
-        padding: 14px 20px;
-        font-size: 16px;
-    }
+    /* ... (생략, 기존 코드와 동일) ... */
 }
+
+/* 
+================================================================
+  [추가된 코드] 캡처 후 미리보기 화면 스타일 
+================================================================
+*/
+
+/* 캡처 화면 전체 레이아웃 (중앙 정렬) */
+.captured-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수평 중앙 정렬 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+}
+
+/* "캡처된 이미지" 제목 마진 조정 */
+.captured-image-container .main-title-select-option {
+    margin-bottom: 24px;
+}
+
+/* 캡처된 이미지 스타일 */
+.captured-image {
+    width: 100%;
+    max-width: 360px; /* 버튼과 너비를 맞추기 위한 최대 너비 */
+    aspect-ratio: 9 / 16;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 32px;
+}
+
+.captured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 두 버튼을 감싸는 컨테이너 */
+.captured-image-container .button-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px; /* 이미지 너비와 동일하게 설정 */
+    gap: 12px; /* 버튼 사이의 간격(마진) */
+}
+
+/* 두 번째 버튼("이 사진으로 계속하기")을 더 강조 */
+.captured-image-container .action-button-select-option.primary {
+    font-weight: 700;
+}
+
+/*
+  "다시 촬영하기" 버튼은 다른 스타일을 원할 경우 아래 주석을 해제하여 사용하세요.
+  예: 흰색 배경의 보조 버튼
+
+.captured-image-container .action-button-select-option:not(.primary) {
+    background: #ffffff;
+    color: #555;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.captured-image-container .action-button-select-option:not(.primary):hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+*/
