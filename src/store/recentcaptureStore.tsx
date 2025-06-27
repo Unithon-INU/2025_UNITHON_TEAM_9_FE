@@ -8,6 +8,7 @@ type CaptureState = {
     selectCapturedImage: string | null;
     setRecentImages: (images: string[]) => void;
     setShowCamera: (show: boolean) => void;
+    resetRecentImages: () => void;
 };
 
 export const useRecentCaptureStore = create<CaptureState>(set => ({
@@ -18,4 +19,5 @@ export const useRecentCaptureStore = create<CaptureState>(set => ({
     selectCapturedImage: null,
     setRecentImages: images => set({ recentImages: images }),
     setShowCamera: show => set({ showCamera: show }),
+    resetRecentImages: () => set({ recentImages: [] }),
 }));

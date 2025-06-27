@@ -12,7 +12,11 @@ import { usePredictionStore } from '../store/predictionStore';
  */
 const url = 'https://home.goldenmine.kr/chakboot';
 
-export async function requestPrediction(img1: Blob, img2: Blob) {
+export async function requestPrediction(
+    img1: Blob,
+    img2: Blob,
+    signal?: AbortSignal
+) {
     console.log('request prediction');
     // 1. multipart/form-data 생성
     const form = new FormData();
@@ -23,6 +27,7 @@ export async function requestPrediction(img1: Blob, img2: Blob) {
     const res = await fetch(url + '/ai/predict', {
         method: 'POST',
         body: form,
+        signal, //
     });
 
     if (!res.ok)
