@@ -29,8 +29,12 @@
 /* 메인 텍스트 스타일 */
 .loading-text-main {
     font-size: 1.7rem; /* 20px */
+    text-align: center;
+    right: auto;
+    left: auto;
     font-weight: 600;
     color: #333;
+    white-space: pre-line;
     margin: 0 0 1.5rem 0; /* [수정] 아래쪽 마진을 늘려 버튼과의 간격 확보 */
 }
 
