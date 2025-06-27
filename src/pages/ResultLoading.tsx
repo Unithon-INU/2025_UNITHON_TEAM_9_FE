@@ -1,5 +1,5 @@
 // src/pages/ResultLoading.tsx
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImageStore } from '../store/imageStore';
 import { requestPrediction } from '../api/api';
@@ -9,25 +9,19 @@ import './ResultLoading.css';
 function ResultLoading() {
     const navigate = useNavigate();
     const { clothImageName, modelImageName } = useImageStore();
+    const [status, setStatus] = useState('로딩 중');
 
     useEffect(() => {
         const runPrediction = async () => {
-            // Test code
-            console.log('loading result...');
-            console.log(
-                '선택된 모델 이름: ',
-                modelImageName
-                    ? modelImageName.substring(0, 50) + '...'
-                    : 'null'
-            );
-            console.log('선택된 옷 이름: ', clothImageName);
-
             if (!clothImageName || !modelImageName) {
                 console.error('Missing image names');
                 return;
             }
 
+            setStatus('대기 중... 이미지 합성이 시작됩니다.');
+
             try {
+                setStatus('이미지 합성 중...');
                 const clothBlob = await fetchImageBlob(
                     `/chakbootlounge/images/clothes/${clothImageName}`
                 );
@@ -36,24 +30,74 @@ function ResultLoading() {
 
                 if (modelImageName.startsWith('data:image')) {
                     // 1. 웹캠으로 찍은 사진
-                    // data URL을 Fetch API로 요청해서 Blob 객체로 변환
                     const base64Response = await fetch(modelImageName);
                     modelBlob = await base64Response.blob();
 
-                    await requestPrediction(modelBlob, clothBlob);
+                    // AbortController로 타임아웃 5분 설정
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => {
+                        controller.abort();
+                    }, 300000);
+
+                    try {
+                        await requestPrediction(
+                            modelBlob,
+                            clothBlob,
+                            controller.signal
+                        );
+
+                        clearTimeout(timeoutId);
+                    } catch (error: unknown) {
+                        if (
+                            error instanceof Error &&
+                            error.name === 'AbortError'
+                        ) {
+                            setStatus(
+                                '서버가 혼잡합니다. 잠시 후 다시 시도해주세요.'
+                            );
+                        } else {
+                            throw error;
+                        }
+                    }
                 } else {
                     // 2. 기본 제공된 가상 아바타
                     modelBlob = await fetchImageBlob(
                         `/chakbootlounge/images/models/${modelImageName}`
                     );
 
-                    await requestPrediction(modelBlob, clothBlob);
+                    // AbortController로 타임아웃 5분 설정
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => {
+                        controller.abort();
+                    }, 300000);
+
+                    try {
+                        await requestPrediction(
+                            modelBlob,
+                            clothBlob,
+                            controller.signal
+                        );
+
+                        clearTimeout(timeoutId);
+                    } catch (error: unknown) {
+                        if (
+                            error instanceof Error &&
+                            error.name === 'AbortError'
+                        ) {
+                            setStatus(
+                                '서버가 혼잡합니다. 잠시 후 다시 시도해주세요.'
+                            );
+                        } else {
+                            throw error;
+                        }
+                    }
                 }
                 // 완료되면 result 페이지로 이동
                 navigate('/result');
             } catch (err) {
                 console.error('Prediction error:', err);
                 // 에러 페이지나 재시도 처리 가능
+                setStatus('오류가 발생했습니다. 다시 시도해주세요.');
             }
         };
 
@@ -66,9 +110,7 @@ function ResultLoading() {
 
     return (
         <div className="result-loading-container">
-            <h1 className="loading-title">
-                결과 생성 중입니다... 잠시만 기다려주세요 (약 20초 소요)
-            </h1>
+            <h1 className="loading-title">{status}</h1>
 
             <button className="retry-button" onClick={handleClick}>
                 재시도하기

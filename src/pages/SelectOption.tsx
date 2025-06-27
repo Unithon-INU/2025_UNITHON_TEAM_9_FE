@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import './SelectOption.css';
 import Navbar from '../components/Navbar';
 import { useImageStore } from '../store/imageStore';
@@ -11,7 +11,8 @@ const modelImageUrl = './images/models/man01.png';
 
 const SelectOption: React.FC = () => {
     const navigate = useNavigate();
-    const { showCamera, setShowCamera, recentImages } = useRecentCaptureStore();
+    const { showCamera, setShowCamera, recentImages, resetRecentImages } =
+        useRecentCaptureStore();
     const { setModelImage } = useImageStore();
 
     // 카메라 촬영 버튼
@@ -35,6 +36,14 @@ const SelectOption: React.FC = () => {
             navigate('/resultloading');
         }
     };
+
+    useEffect(() => {
+        // 옷 선택 후 이전에 캡처한 이미지가 있으면 초기화
+        const { clothImageName } = useImageStore.getState();
+        if (clothImageName) {
+            resetRecentImages();
+        }
+    }, [resetRecentImages]);
 
     return (
         <div>
