@@ -88,6 +88,15 @@ const clothList = [
 const modelList = [
     { id: 1, name: '남자', category: '모델', image: 'man01.png' },
     { id: 2, name: '여자', category: '모델', image: 'woman01.png' },
+    { id: 3, name: '카리나', category: '모델', image: 'karina.png' },
+    { id: 4, name: '카리나2', category: '모델', image: 'karina2.png' },
+    { id: 5, name: '윈터', category: '모델', image: 'winter.png' },
+    { id: 6, name: '윈터2', category: '모델', image: 'winter2.png' },
+    { id: 7, name: '장원영', category: '모델', image: 'wonyeong.png' },
+    { id: 8, name: '일론머스크', category: '모델', image: 'person.png' },
+    { id: 8, name: '모델1', category: '모델', image: 'person3.png' },
+    { id: 9, name: '모델2', category: '모델', image: 'person4.png' },
+    { id: 10, name: '모델3', category: '모델', image: 'person5.png' },
 ];
 
 type ImageListProps = {
