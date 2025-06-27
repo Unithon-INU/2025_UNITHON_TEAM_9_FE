@@ -33,7 +33,7 @@ export async function getRecentCapture(): Promise<RecentCaptureResponse> {
         // zustand에 저장
         useRecentCaptureStore.setState({
             recentImage: images.length > 0 ? images[0] : null,
-            recentUrl: images.length > 0 ? images[0] : null,
+            // recentUrl: images.length > 0 ? images[0] : null,
             recentImages: images,
         });
 
