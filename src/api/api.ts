@@ -35,19 +35,14 @@ export async function requestPrediction(img1: Blob, img2: Blob) {
     const imageUrl = `data:image/png;base64,${data.imageBase64}`;
     const finalUrl = `https://home.goldenmine.kr/chakboot/ai/url/${data.url}`;
 
-    console.log(finalUrl);
     // zustand에 저장
     usePredictionStore.setState({
         resultImage: imageUrl,
         resultUrl: finalUrl,
     });
-
-    // return data;
 }
 
-
 export async function requestPredictionRecent(img: Blob) {
-    console.log('request prediction');
     // 1. multipart/form-data 생성
     const form = new FormData();
     form.append('img', img, 'img.png');

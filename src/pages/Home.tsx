@@ -21,25 +21,20 @@ function Home() {
         <div className="home-container">
             <Navbar />
 
-            <h1 className="title">가상 피팅 체험하기</h1>
+            <h1 className="title">
+                AI를 이용해서 원하는 옷을 편하게 입어보세요!
+            </h1>
             <p className="subtitle">
-                원하는 옷과 모델을 선택하여 가상 피팅을 경험해보세요
+                가상 피팅 경험을 제공하여, 옷을 직접 입어보지 않고도
                 <br />
-                당신에게 어울리는 옷을 찾아드립니다!
+                피팅 결과를 확인할 수 있습니다
             </p>
 
             <button className="start-button" onClick={handleClick}>
-                시작하기
+                가상 피팅 경험해보기
             </button>
 
-            <div className="image-preview">
-                <div className="preview-item">
-                    <img src="/chakbootlounge/images/models/woman01.png" alt="옷 미리보기" />
-                </div>
-                <div className="preview-item">
-                    <img src="/chakbootlounge/images/models/man01.png" alt="모델 미리보기" />
-                </div>
-            </div>
+            <div className="image-preview"></div>
         </div>
     );
 }

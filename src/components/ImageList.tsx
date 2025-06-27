@@ -9,85 +9,85 @@ const clothList = [
         id: 1,
         name: '모즈모즈 흰색',
         category: '상의',
-        image: 'cloth01.png',
+        image: '1.png',
     },
     {
         id: 2,
         name: '모즈모즈 검은색',
         category: '상의',
-        image: 'cloth02.png',
+        image: '2.png',
     },
     {
         id: 3,
-        name: 'cloth03',
+        name: '3.png',
         category: '상의',
-        image: 'cloth03.png',
+        image: '3.png',
     },
     {
         id: 4,
-        name: 'cloth04',
+        name: '4.png',
         category: '상의',
-        image: 'cloth04.png',
+        image: '4.png',
     },
     {
         id: 5,
-        name: 'cloth05',
+        name: '5.png',
         category: '상의',
-        image: 'cloth05.png',
+        image: '5.png',
     },
     {
         id: 6,
-        name: 'cloth06',
+        name: '6.png',
         category: '상의',
-        image: 'cloth06.png',
+        image: '6.png',
     },
     {
         id: 7,
-        name: 'cloth07',
+        name: '7.png',
         category: '상의',
-        image: 'cloth07.png',
+        image: '7.png',
     },
     {
         id: 8,
-        name: 'cloth08',
+        name: '8.png',
         category: '상의',
-        image: 'cloth08.png',
+        image: '8.png',
     },
     {
         id: 9,
-        name: 'cloth09',
+        name: '9.png',
         category: '상의',
-        image: 'cloth09.png',
+        image: '9.png',
     },
     {
         id: 10,
-        name: 'cloth10',
+        name: '10.png',
         category: '상의',
-        image: 'cloth10.png',
+        image: '10.png',
     },
     {
         id: 11,
-        name: 'cloth11',
+        name: '11.png',
         category: '상의',
-        image: 'cloth11.png',
+        image: '11.png',
     },
     {
         id: 12,
-        name: 'cloth12',
+        name: '12.png',
         category: '상의',
-        image: 'cloth12.png',
+        image: '12.png',
     },
     {
         id: 13,
-        name: 'cloth13',
+        name: '13.png',
         category: '상의',
-        image: 'cloth13.png',
+        image: '13.png',
     },
 ];
 
 const modelList = [
-    { id: 1, name: 'man01', category: '모델', image: 'man01.png' },
-    { id: 2, name: 'woman01', category: '모델', image: 'woman01.png' },
+    { id: 1, name: '남자', category: '모델', image: 'man01.png' },
+    { id: 2, name: '여자', category: '모델', image: 'woman01.png' },
 ];
 
 type ImageListProps = {
@@ -163,20 +163,20 @@ const ImageList: React.FC<ImageListProps> = ({ imageType }) => {
 
     return (
         <div>
-            <div className="search-container">
-                <div className="search-input-wrapper">
-                    <FiSearch className="search-icon" />
-                    <input
-                        type="text"
-                        placeholder={`${
-                            imageType === 'cloth' ? '의류' : '모델'
-                        }명 또는 카테고리로 검색`}
-                        className="search-input"
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                    />
+            {imageType === 'cloth' && (
+                <div className="search-container">
+                    <div className="search-input-wrapper">
+                        <FiSearch className="search-icon" />
+                        <input
+                            type="text"
+                            placeholder={`의류명으로 검색`}
+                            className="search-input"
+                            value={searchTerm}
+                            onChange={e => setSearchTerm(e.target.value)}
+                        />
+                    </div>
                 </div>
-            </div>
+            )}
             <div className={`${imageType}-list`}>
                 {imageType === 'model' && recentImages.length > 0
                     ? // 최근 이미지 리스트 + 모델 목록 띄우기
@@ -185,14 +185,17 @@ const ImageList: React.FC<ImageListProps> = ({ imageType }) => {
                               key={item.id}
                               className={`item-box ${itemClass} ${
                                   selectedImage === item.image ? 'selected' : ''
-                              }`}
+                              } ${imageType === 'model' ? 'model-card' : ''}`}
                               onClick={() => handleClick(item.image)}
                           >
-                              <div>{item.name}</div>
                               <img
                                   src={getImageSrc(item.image)}
                                   alt={item.name}
+                                  className={
+                                      imageType === 'model' ? 'model-image' : ''
+                                  }
                               />
+
                               {selectedImage === item.name && (
                                   <div className="selected-indicator">
                                       <div className="check-icon"></div>
@@ -206,14 +209,19 @@ const ImageList: React.FC<ImageListProps> = ({ imageType }) => {
                               key={item.id}
                               className={`item-box ${itemClass} ${
                                   selectedImage === item.image ? 'selected' : ''
-                              }`}
+                              } ${imageType === 'model' ? 'model-card' : ''}`}
                               onClick={() => handleClick(item.image)}
                           >
-                              <div>{item.name}</div>
                               <img
                                   src={getImageSrc(item.image)}
                                   alt={item.image}
+                                  className={
+                                      imageType === 'model' ? 'model-image' : ''
+                                  }
                               />
+                              {imageType !== 'model' && (
+                                  <div className="item-name">{item.name}</div>
+                              )}
                               {selectedImage === item.image && (
                                   <div className="selected-indicator">
                                       <div className="check-icon"></div>

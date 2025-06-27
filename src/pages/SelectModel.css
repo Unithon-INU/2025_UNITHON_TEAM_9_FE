@@ -1,5 +1,6 @@
 /* SelectModel.css */
 :root {
+    --colorful-gradient: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
     --primary-color: #4a55a2;
     --secondary-color: #7895cb;
     --accent-color: #a0bfe0;
@@ -101,7 +102,7 @@
 }
 
 .continue-button {
-    background-color: var(--primary-color);
+    background-color: var(--colorful-gradient);
     color: white;
     border: none;
     border-radius: 10px;

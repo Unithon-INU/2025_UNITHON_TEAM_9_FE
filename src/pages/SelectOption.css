@@ -1,5 +1,7 @@
 /* SelectOption.css */
-
+:root {
+    --colorful-gradient: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
+}
 /* Styles for the main page container for this specific component */
 .page-container-select-option {
     display: flex;
@@ -93,7 +95,7 @@
     font-size: 18px; /* 글꼴 크기 증가 */
     font-weight: 600;
     color: #ffffff; /* 흰색 텍스트 */
-    background-color: #4a55a2; /* 더 밝고 눈에 띄는 파란색 */
+    background: var(--colorful-gradient);
     border: none;
     border-radius: 10px; /* 더 둥근 모서리 */
     cursor: pointer;

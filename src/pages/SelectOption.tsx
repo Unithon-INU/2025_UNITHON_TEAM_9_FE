@@ -1,6 +1,7 @@
 import React from 'react';
 import './SelectOption.css';
 import Navbar from '../components/Navbar';
+import { useImageStore } from '../store/imageStore';
 import { useRecentCaptureStore } from '../store/recentcaptureStore';
 import WebcamCapture from '../components/WebcamCapture';
 import { useNavigate } from 'react-router-dom';
@@ -10,14 +11,29 @@ const modelImageUrl = './images/models/man01.png';
 
 const SelectOption: React.FC = () => {
     const navigate = useNavigate();
-    const { showCamera, setShowCamera, recentImages } = useRecentCaptureStore(); // store에서 상태 가져옴
+    const { showCamera, setShowCamera, recentImages } = useRecentCaptureStore();
+    const { setModelImage } = useImageStore();
+
     // 카메라 촬영 버튼
-    const handleSelectAndContinue = () => {
+    const handleCapture = () => {
         setShowCamera(true);
     };
+
     // 가상 아바타 선택 버튼
     const handleSelectModel = () => {
         navigate('/selectmodel');
+    };
+
+    // 방금 캡처한 이미지를 모델로 선택하여 합성 ㄱㄱ하기 -> modelImage에 최종 저장 후 resultloading으로 이동
+    const handleSelectAndContinue = () => {
+        if (recentImages.length > 0) {
+            console.log(
+                '방금 찍은 사진: ',
+                recentImages[0].substring(0, 50) + '...'
+            );
+            setModelImage(recentImages[0]);
+            navigate('/resultloading');
+        }
     };
 
     return (
@@ -40,9 +56,7 @@ const SelectOption: React.FC = () => {
                         </button>
                         <button
                             className="action-button-select-option primary"
-                            onClick={() => {
-                                navigate('/resultloading');
-                            }}
+                            onClick={handleSelectAndContinue}
                         >
                             이 사진으로 계속하기
                         </button>
@@ -53,7 +67,7 @@ const SelectOption: React.FC = () => {
                     <Navbar />
                     <div className="page-container-select-option">
                         <h1 className="main-title-select-option">
-                            모델 선택하기
+                            희망하는 옵션을 선택해 주세요
                         </h1>
                         <div className="options-layout-select-option">
                             {/* 사진 찍기 */}
@@ -67,7 +81,7 @@ const SelectOption: React.FC = () => {
                                 </div>
                                 <button
                                     className="action-button-select-option"
-                                    onClick={handleSelectAndContinue}
+                                    onClick={handleCapture}
                                 >
                                     직접 촬영하기
                                 </button>
@@ -86,7 +100,7 @@ const SelectOption: React.FC = () => {
                                     className="action-button-select-option"
                                     onClick={handleSelectModel}
                                 >
-                                    가상 아바타 선택하기
+                                    가상 아바타
                                 </button>
                             </div>
                         </div>

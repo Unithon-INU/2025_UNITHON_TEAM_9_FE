@@ -1,4 +1,7 @@
 /* ImageList.css */
+:root {
+    --colorful-gradient: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
+}
 
 /* 컨테이너 스타일 */
 .cloth-list,
@@ -12,9 +15,28 @@
 .item-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    background-color: white;
+    padding-bottom: 10px;
+    min-height: 400px;
     gap: 10px;
+}
+
+.item-box img {
+    margin-top: auto;
+    margin-bottom: auto;
+    height: auto;
+    max-height: 320px; /* Limits image height to leave space for text */
+    width: auto;
+    object-fit: contain;
+}
+
+.item-box .item-name {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 400;
+    color: #6c757d;
 }
 
 .search-container {
@@ -70,6 +92,27 @@
     border: 3px solid #4a55a2;
 }
 
+/* 모델 카드 스타일 - 이미지가 카드를 꽉 채우도록 설정 */
+.model-card {
+    position: relative;
+    padding: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.model-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율을 유지하면서 컨테이너를 꽉 채움 */
+    object-position: center; /* 이미지가 중앙에 위치하도록 설정 */
+    background-color: white;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: block; /* 이미지 간 간격 제거 */
+}
+
 /* 이미지 스타일 */
 .image-item img {
     max-width: 100%;
@@ -96,7 +139,7 @@
     right: 10px;
     width: 24px;
     height: 24px;
-    background-color: #4a55a2;
+    background: var(--colorful-gradient);
     border-radius: 50%;
     display: flex;
     align-items: center;

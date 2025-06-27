@@ -1,6 +1,6 @@
-/* SelectCloth.css */
 :root {
-    --primary-color: #4a55a2;
+    --colorful-gradient: linear-gradient(91.9deg, #465eb7 0.8%, #6d40d2 99.45%);
+    --primary-color: #000000;
     --secondary-color: #7895cb;
     --accent-color: #a0bfe0;
     --text-primary: #333333;
@@ -98,16 +98,16 @@
     border: 3px solid var(--primary-color);
 }
 
+/* Button */
 .continue-button {
     position: fixed;
     bottom: 20px;
     left: 40%;
     width: 300px;
     margin: 0 auto;
-    background-color: var(--primary-color);
+    background: var(--colorful-gradient);
     color: white;
     border: none;
-    background: rgba(255, 255, 255, 0.9);
     padding: 15px 0;
     z-index: 100;
     border-radius: 10px;
