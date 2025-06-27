@@ -5,11 +5,14 @@ import { useImageStore } from '../store/imageStore';
 import { requestPrediction } from '../api/api';
 import { fetchImageBlob } from '../utils/blob';
 import './ResultLoading.css';
+import Navbar from '../components/Navbar';
 
 function ResultLoading() {
     const navigate = useNavigate();
     const { clothImageName, modelImageName } = useImageStore();
-    const [status, setStatus] = useState('로딩 중');
+    const [status, setStatus] = useState('로딩 시작 대기');
+
+    const logoUrl = './images/bubble.svg';
 
     useEffect(() => {
         const runPrediction = async () => {
@@ -18,10 +21,14 @@ function ResultLoading() {
                 return;
             }
 
-            setStatus('대기 중... 이미지 합성이 시작됩니다.');
+            setStatus(
+                '당신의 피팅 결과를 준비중이에요! \n 약 3분 정도 소요됩니다.'
+            );
 
             try {
-                setStatus('이미지 합성 중...');
+                setStatus(
+                    '당신의 피팅 결과를 준비중이에요! \n 약 3분 정도 소요됩니다.'
+                );
                 const clothBlob = await fetchImageBlob(
                     `/chakbootlounge/images/clothes/${clothImageName}`
                 );
@@ -104,17 +111,13 @@ function ResultLoading() {
         runPrediction();
     }, [clothImageName, modelImageName, navigate]);
 
-    const handleClick = () => {
-        navigate('/');
-    };
-
     return (
         <div className="result-loading-container">
-            <h1 className="loading-title">{status}</h1>
-
-            <button className="retry-button" onClick={handleClick}>
-                재시도하기
-            </button>
+            <Navbar />
+            <div className="logo-container">
+                <img src={logoUrl} alt="logo" />
+            </div>
+            <h1 className="loading-text-main">{status}</h1>
         </div>
     );
 }

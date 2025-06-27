@@ -1,0 +1,51 @@
+/* src/pages/ResultLoading.css (수정됨) */
+
+/* 
+  컨테이너 이름을 JSX에 맞게 .result-loading-container로 변경하고,
+  내용물을 좌측 상단으로 정렬합니다.
+*/
+.result-loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* [수정] center -> flex-start (수직 상단 정렬) */
+    align-items: center; /* [수정] center -> flex-start (수평 좌측 정렬) */
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    box-sizing: border-box; /* padding이 크기에 영향을 주지 않도록 설정 */
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 로고를 담는 컨테이너 스타일 (JSX에 맞춤) */
+.logo-container {
+    /* 애니메이션은 로고 자체에 적용 */
+    animation: floatAndPulse 4s ease-in-out infinite;
+}
+
+.logo-container img {
+    width: 200px;
+}
+
+/* 메인 텍스트 스타일 */
+.loading-text-main {
+    font-size: 1.7rem; /* 20px */
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 1.5rem 0; /* [수정] 아래쪽 마진을 늘려 버튼과의 간격 확보 */
+}
+
+/* 로고 애니메이션 (변경 없음) */
+@keyframes floatAndPulse {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.2); /* 움직임 폭을 약간 줄임 */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+    }
+}

@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
                     className={`navbar-link ${isActive('/') ? 'active' : ''}`}
                     onClick={() => navigate('/')}
                 >
-                    홈
+                    Home
                 </div>
                 <div
                     className={`navbar-link ${
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
                     }`}
                     onClick={() => navigate('/selectcloth')}
                 >
-                    옷 선택
+                    Clothes
                 </div>
                 <div
                     className={`navbar-link ${
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
                     }`}
                     onClick={() => navigate('/selectmodel')}
                 >
-                    모델 선택
+                    Models
                 </div>
                 <div
                     className={`navbar-link ${
@@ -45,9 +45,10 @@ const Navbar: React.FC = () => {
                     }`}
                     onClick={() => navigate('/result')}
                 >
-                    결과
+                    Result
                 </div>
             </div>
+            <div></div>
         </nav>
     );
 };

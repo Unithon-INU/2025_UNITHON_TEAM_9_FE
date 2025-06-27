@@ -43,29 +43,33 @@ const WebcamCapture: React.FC = () => {
         setShowCamera(false);
     }, [setShowCamera]);
 
-    return error ? (
-        <div>
-            {/* 접근 권한 없을 때*/}
-            <p>{error}</p>
-            <button onClick={handleCancel}>돌아가기</button>
-        </div>
-    ) : (
-        <div>
-            <Webcam
-                audio={false}
-                height={500}
-                screenshotFormat="image/jpeg"
-                width={720}
-                ref={webcamRef}
-                videoConstraints={videoConstraints}
-                onUserMediaError={handleUserMediaError}
-            />
-            <button
-                className="action-button-select-option"
-                onClick={handleCapture}
-            >
-                Capture
-            </button>
+    return (
+        <div className="webcam-overlay">
+            {error ? (
+                <div className="error-container">
+                    <p className="error-message">{error}</p>
+                    <button className="back-button" onClick={handleCancel}>
+                        돌아가기
+                    </button>
+                </div>
+            ) : (
+                <div className="webcam-capture-container">
+                    {/* 웹캠 영상을 감싸는 래퍼 */}
+                    <div className="webcam-wrapper">
+                        <Webcam
+                            audio={false}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            videoConstraints={videoConstraints}
+                            onUserMediaError={handleUserMediaError}
+                            mirrored={true} // 사용자가 보는 화면처럼 좌우 반전
+                        />
+                    </div>
+                    <button className="capture-button" onClick={handleCapture}>
+                        Capture
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
