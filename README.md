@@ -1,12 +1,12 @@
 # Chakboot: AI 가상 피팅 서비스 👚👖
 
-<img width="639" alt="Image" src="https://github.com/user-attachments/assets/2b6d39c1-9daa-4e64-bf1c-e5deeaaa56cf" />
-
 ## 📌 프로젝트 소개
-
 ChakBoot는 AI 가상 피팅 서비스로, 사용자가 직접 옷을 입어보지 않고도 가상으로 피팅 결과를 확인할 수 있는 서비스입니다.
 
-[영상]
+<img width="500" alt="Image" src="https://github.com/user-attachments/assets/2b6d39c1-9daa-4e64-bf1c-e5deeaaa56cf" />
+<img width="500" alt="Image" src="https://github.com/user-attachments/assets/6b9cdcc6-5b64-4062-8a8f-a516d45dd7c9" />
+<img width="500" alt="Image" src="https://github.com/user-attachments/assets/cba7e1f9-cc11-4496-a402-cce459498418" />
+
 ## ✨ 주요 기능
 
 - **옷 선택**: 다양한 옷 중에서 입어보고 싶은 옷을 선택
