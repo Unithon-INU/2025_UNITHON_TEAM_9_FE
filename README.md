@@ -50,4 +50,4 @@ npm start
 | 정동현 | FE/PM  |    https://github.com/jdh4601     |
 | 정신우 |   AI   |  https://github.com/SpiritRight   |
 | 김태원 | BE/AI  | https://github.com/GoldenMine0502 |
-| 양서린 | Design | https://www.instagram.com/seo_rin0823 |
+| 양서린 | Design | https://github.com/yangseorin     |
